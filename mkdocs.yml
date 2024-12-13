@@ -1,0 +1,63 @@
+site_name: SS1 Documentation
+site_description: 
+site_author: duykhanh471
+repo_url: https://github.com/suyttthideptrai/SS1_2023_StableMatchingSolver_Backend
+repo_name: Open a pull request
+
+nav:
+  - 'Trang chủ': 'index.md'
+  - 'Game Theory':
+     - 'Game Theory Module': 'game-theory-module.md'
+
+theme:
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: grey
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - search.suggest
+    - search.highlighting
+    - search.share
+  name: material
+
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - meta
+  - admonition
+  - attr_list
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+      
+plugins:
+  - search
+  # - open-in-new-tab
+  
+extra:
+  generator: false
