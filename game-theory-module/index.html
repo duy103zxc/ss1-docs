@@ -1,0 +1,1729 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="duykhanh471">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Game Theory Module - SS1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1ve-normal-player" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SS1 Documentation" class="md-header__button md-logo" aria-label="SS1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SS1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Game Theory Module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/suyttthideptrai/SS1_2023_StableMatchingSolver_Backend" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Open a pull request
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Trang chủ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Game Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SS1 Documentation" class="md-nav__button md-logo" aria-label="SS1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SS1 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/suyttthideptrai/SS1_2023_StableMatchingSolver_Backend" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Open a pull request
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trang chủ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Game Theory
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Game Theory
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Game Theory Module
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Game Theory Module
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1ve-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Về Normal Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Về Normal Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-y-nghia-va-cac-chuc-nang-cua-normalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Ý nghĩa và các chức năng của NormalPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mo-phong-mot-tro-choi-on-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mô phỏng một trò chơi đơn giản
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mo-phong-ly-thuyet-tro-choi-voi-normalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mô phỏng lý thuyết trò chơi với NormalPlayer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mô phỏng lý thuyết trò chơi với NormalPlayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-normalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp NormalPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp Game
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-giai-thich-ma-nguon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ket-qua-cua-chuong-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kết quả của chương trình
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ve-special-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Về Special Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Về Special Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-khai-niem-special-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Khái niệm "Special Player"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mo-phong-special-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mô phỏng Special Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Mô phỏng Special Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-player-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp Player cơ bản
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-specialplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp SpecialPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lop-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Lớp Game
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-giai-thich-ma-nguon" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ket-qua-cua-chuong-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Kết quả của chương trình
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ve-old-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Về Old Normal Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Về Old Normal Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-giai-thich-y-nghia-va-cac-chuc-nang-cua-old-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Giải thích ý nghĩa và các chức năng của "Old Normal Player"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mo-phong-old-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mô phỏng "Old Normal Player"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Mô phỏng "Old Normal Player"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-player-co-ban_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp Player cơ bản
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-oldnormalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp OldNormalPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lop-game_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Lớp Game
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-giai-thich-ma-nguon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ket-qua-cua-chuong-trinh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Kết quả của chương trình
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ve-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Về Conflict
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Về Conflict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-giai-thich-ve-conflict-trong-ly-thuyet-tro-choi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Giải thích về "Conflict" trong lý thuyết trò chơi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cac-lop-va-chuc-nang-trong-mo-hinh-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Các lớp và chức năng trong mô hình "Conflict"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mo-phong-tro-choi-co-mau-thuan-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mô phỏng trò chơi có mâu thuẫn (Conflict)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mô phỏng trò chơi có mâu thuẫn (Conflict)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp Player
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-conflictgame" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp ConflictGame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lop-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Lớp Conflict
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-giai-thich-ma-nguon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ket-qua-chay-chuong-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kết quả chạy chương trình
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mot-so-nhung-bai-toan-giai-thich-va-cong-thuc-cho-nhung-module-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Một số những bài toán giải thích và công thức cho những module khác
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1ve-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Về Normal Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Về Normal Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-y-nghia-va-cac-chuc-nang-cua-normalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Ý nghĩa và các chức năng của NormalPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mo-phong-mot-tro-choi-on-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mô phỏng một trò chơi đơn giản
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mo-phong-ly-thuyet-tro-choi-voi-normalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mô phỏng lý thuyết trò chơi với NormalPlayer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mô phỏng lý thuyết trò chơi với NormalPlayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-normalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp NormalPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp Game
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-giai-thich-ma-nguon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ket-qua-cua-chuong-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kết quả của chương trình
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ve-special-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Về Special Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Về Special Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-khai-niem-special-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Khái niệm "Special Player"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mo-phong-special-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mô phỏng Special Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Mô phỏng Special Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-player-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp Player cơ bản
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-specialplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp SpecialPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lop-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Lớp Game
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-giai-thich-ma-nguon" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ket-qua-cua-chuong-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Kết quả của chương trình
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ve-old-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Về Old Normal Player
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Về Old Normal Player">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-giai-thich-y-nghia-va-cac-chuc-nang-cua-old-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Giải thích ý nghĩa và các chức năng của "Old Normal Player"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mo-phong-old-normal-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mô phỏng "Old Normal Player"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Mô phỏng "Old Normal Player"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-player-co-ban_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp Player cơ bản
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-oldnormalplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp OldNormalPlayer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lop-game_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Lớp Game
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-giai-thich-ma-nguon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ket-qua-cua-chuong-trinh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Kết quả của chương trình
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ve-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Về Conflict
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Về Conflict">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-giai-thich-ve-conflict-trong-ly-thuyet-tro-choi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Giải thích về "Conflict" trong lý thuyết trò chơi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cac-lop-va-chuc-nang-trong-mo-hinh-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Các lớp và chức năng trong mô hình "Conflict"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mo-phong-tro-choi-co-mau-thuan-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mô phỏng trò chơi có mâu thuẫn (Conflict)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mô phỏng trò chơi có mâu thuẫn (Conflict)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-lop-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Lớp Player
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-lop-conflictgame" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Lớp ConflictGame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-lop-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Lớp Conflict
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-giai-thich-ma-nguon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Giải thích mã nguồn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ket-qua-chay-chuong-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kết quả chạy chương trình
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mot-so-nhung-bai-toan-giai-thich-va-cong-thuc-cho-nhung-module-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Một số những bài toán giải thích và công thức cho những module khác
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Game Theory Module</h1>
+
+<h2 id="1ve-normal-player">1.Về Normal Player<a class="headerlink" href="#1ve-normal-player" title="Permanent link">&para;</a></h2>
+<p>Trong lý thuyết trò chơi, <strong>Normal Player</strong> có thể đại diện cho một người chơi trong trò chơi lý thuyết trò chơi. Tuy nhiên, <strong>Game Theory</strong> là một khái niệm lý thuyết hơn là một module cụ thể trong Java. Vì vậy, nếu tìm kiếm một thư viện trong Java để thực hiện các tính toán lý thuyết trò chơi (game theory), sẽ phải xây dựng mô hình trò chơi của mình hoặc tìm các thư viện Java hỗ trợ lý thuyết trò chơi như <strong>JGame</strong> hoặc <strong>Apache Commons Math</strong> (có một số chức năng về lý thuyết trò chơi).</p>
+<h3 id="1-y-nghia-va-cac-chuc-nang-cua-normalplayer"><strong>1. Ý nghĩa và các chức năng của NormalPlayer</strong><a class="headerlink" href="#1-y-nghia-va-cac-chuc-nang-cua-normalplayer" title="Permanent link">&para;</a></h3>
+<p>Trong trò chơi lý thuyết, người chơi (Player) sẽ đưa ra các chiến lược, nhận thưởng (payoff), và cố gắng tối ưu hóa kết quả của mình. <strong>Normal Player</strong> có thể được mô phỏng là một đối tượng trong lớp Java, nơi người chơi sẽ chọn chiến lược và tính toán kết quả của hành động của mình.</p>
+<h3 id="2-mo-phong-mot-tro-choi-on-gian"><strong>2. Mô phỏng một trò chơi đơn giản</strong><a class="headerlink" href="#2-mo-phong-mot-tro-choi-on-gian" title="Permanent link">&para;</a></h3>
+<p>Ví dụ dưới đây mô phỏng một trò chơi hai người chơi với các chiến lược và trả thưởng cụ thể (trò chơi kiểu ma trận). sẽ sử dụng các lớp như Player và NormalPlayer trong Java để tạo ra trò chơi này.</p>
+<h3 id="3-mo-phong-ly-thuyet-tro-choi-voi-normalplayer"><strong>3. Mô phỏng lý thuyết trò chơi với NormalPlayer</strong><a class="headerlink" href="#3-mo-phong-ly-thuyet-tro-choi-voi-normalplayer" title="Permanent link">&para;</a></h3>
+<h4 id="a-lop-normalplayer"><strong>a. Lớp NormalPlayer</strong><a class="headerlink" href="#a-lop-normalplayer" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NormalPlayer</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">NormalPlayer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Chưa chọn chiến lược  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Chọn chiến lược của người chơi  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">chooseStrategy</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Lấy chiến lược của người chơi  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Tính toán trả thưởng cho người chơi, tùy thuộc vào chiến lược của đối thủ  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">calculatePayoff</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Ví dụ trò chơi &quot;Prisoner&#39;s Dilemma&quot; (Dilemma của tù nhân)  </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai cùng hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình hợp tác, đối thủ phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình phản bội, đối thủ hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai đều phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Trường hợp không xác định  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="b-lop-game"><strong>b. Lớp Game</strong><a class="headerlink" href="#b-lop-game" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Game</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Tạo hai người chơi  </span>
+<span class="w">        </span><span class="n">NormalPlayer</span><span class="w"> </span><span class="n">player1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NormalPlayer</span><span class="p">(</span><span class="s">&quot;Player 1&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">NormalPlayer</span><span class="w"> </span><span class="n">player2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NormalPlayer</span><span class="p">(</span><span class="s">&quot;Player 2&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Chọn chiến lược cho cả hai người chơi  </span>
+<span class="w">        </span><span class="n">player1</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">player2</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Tính toán trả thưởng cho Player 1 dựa trên chiến lược của Player 2  </span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">payoff1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">player1</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">player2</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span><span class="w">  </span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">payoff2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">player2</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">player1</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// In ra kết quả trả thưởng của cả hai người chơi  </span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">player1</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoff1</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">player2</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoff2</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-giai-thich-ma-nguon"><strong>4. Giải thích mã nguồn</strong><a class="headerlink" href="#4-giai-thich-ma-nguon" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Lớp NormalPlayer</strong>:  </li>
+<li>NormalPlayer đại diện cho một người chơi trong trò chơi. Người chơi có một chiến lược (ví dụ: "Cooperate" hoặc "Defect").  </li>
+<li>Phương thức chooseStrategy(String strategy) cho phép người chơi chọn chiến lược của mình.  </li>
+<li>Phương thức calculatePayoff(String opponentStrategy) tính toán trả thưởng cho người chơi dựa trên chiến lược của đối thủ. Đây là cách bạn mô phỏng cách thức trả thưởng trong lý thuyết trò chơi.  </li>
+<li><strong>Lớp Game</strong>:  </li>
+<li>Lớp này chứa phương thức main để tạo hai người chơi và mô phỏng một trò chơi đơn giản. Trong ví dụ này, Player 1 chọn chiến lược "Cooperate" và Player 2 chọn "Defect".  </li>
+<li>Sau đó, trả thưởng được tính toán cho cả hai người chơi dựa trên chiến lược của họ và đối thủ.</li>
+</ul>
+<h3 id="5-ket-qua-cua-chuong-trinh"><strong>5. Kết quả của chương trình</strong><a class="headerlink" href="#5-ket-qua-cua-chuong-trinh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Player 1 payoff: 0  
+Player 2 payoff: 5
+</code></pre></div>
+<p><strong>Giải thích kết quả:</strong></p>
+<ul>
+<li><strong>Player 1</strong> chọn "Cooperate", trong khi <strong>Player 2</strong> chọn "Defect".  </li>
+<li>Theo bảng trả thưởng của trò chơi <strong>Prisoner's Dilemma</strong>, nếu Player 1 hợp tác và Player 2 phản bội, Player 1 nhận trả thưởng 0 (thua cuộc), và Player 2 nhận trả thưởng 5 (thắng).</li>
+</ul>
+<h2 id="2-ve-special-player">2. Về Special Player<a class="headerlink" href="#2-ve-special-player" title="Permanent link">&para;</a></h2>
+<p>Trong lý thuyết trò chơi, khái niệm <strong>Special Player</strong> không phải là một khái niệm chuẩn trong lý thuyết trò chơi mà có thể  đang ám chỉ một lớp người chơi đặc biệt với các tính năng hoặc chiến lược khác biệt so với người chơi bình thường (Normal Player). Tùy vào ngữ cảnh trò chơi, <strong>Special Player</strong> có thể được hiểu là một người chơi có chiến lược đặc biệt, ví dụ như chiến lược hợp tác, chiến lược tối ưu hóa, hoặc thậm chí là một người chơi có khả năng thay đổi chiến lược dựa trên tình huống.</p>
+<h3 id="1-khai-niem-special-player"><strong>1. Khái niệm "Special Player"</strong><a class="headerlink" href="#1-khai-niem-special-player" title="Permanent link">&para;</a></h3>
+<p>Trong ví dụ dưới đây, giả sử rằng <strong>Special Player</strong> là một người chơi có chiến lược đặc biệt. Một <strong>Special Player</strong> có thể có các tính năng khác biệt như:</p>
+<ul>
+<li><strong>Chiến lược phản ứng</strong>: Chọn chiến lược dựa trên hành động của đối thủ trong các lượt chơi trước đó.  </li>
+<li><strong>Chiến lược hợp tác đặc biệt</strong>: Ví dụ, họ có thể hợp tác trong một số tình huống cụ thể.  </li>
+<li><strong>Khả năng thay đổi chiến lược</strong>: Người chơi có thể thay đổi chiến lược của mình sau mỗi lượt chơi.</li>
+</ul>
+<p>Dưới đây là một ví dụ về cách mô phỏng <strong>Special Player</strong> trong trò chơi lý thuyết trò chơi bằng Java.</p>
+<h3 id="2-mo-phong-special-player"><strong>2. Mô phỏng Special Player</strong><a class="headerlink" href="#2-mo-phong-special-player" title="Permanent link">&para;</a></h3>
+<p>xây dựng một lớp <strong>SpecialPlayer</strong> có một số tính năng đặc biệt so với người chơi bình thường, chẳng hạn như chọn chiến lược "hợp tác" nếu đối thủ hợp tác, hoặc chọn "phản bội" nếu đối thủ phản bội.</p>
+<h4 id="a-lop-player-co-ban"><strong>a. Lớp Player cơ bản</strong><a class="headerlink" href="#a-lop-player-co-ban" title="Permanent link">&para;</a></h4>
+<p>Đây là lớp cơ bản cho người chơi trong trò chơi. Người chơi có thể chọn chiến lược và tính toán trả thưởng dựa trên chiến lược của đối thủ.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Player</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Player</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mặc định chọn chiến lược hợp tác  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">chooseStrategy</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">calculatePayoff</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Ví dụ với trò chơi Prisoner&#39;s Dilemma  </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình hợp tác, đối thủ phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình phản bội, đối thủ hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Trường hợp không xác định  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="b-lop-specialplayer"><strong>b. Lớp SpecialPlayer</strong><a class="headerlink" href="#b-lop-specialplayer" title="Permanent link">&para;</a></h4>
+<p>Lớp SpecialPlayer sẽ mở rộng từ lớp Player và có một số chiến lược đặc biệt, ví dụ như thay đổi chiến lược tùy theo các bước trước đó trong trò chơi. Cụ thể, chúng ta sẽ giả định rằng <strong>SpecialPlayer</strong> có thể sử dụng chiến lược "Tit for Tat" (hợp tác trong lượt đầu tiên, sau đó phản ứng lại đối thủ trong các lượt tiếp theo).</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpecialPlayer</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">lastOpponentCooperated</span><span class="p">;</span><span class="w"> </span><span class="c1">// Để theo dõi hành động của đối thủ ở lượt trước</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SpecialPlayer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">lastOpponentCooperated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Giả sử đối thủ hợp tác trong lượt đầu tiên  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">chooseStrategy</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lastOpponentCooperated</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="c1">// Nếu đối thủ hợp tác trong lượt trước, mình sẽ hợp tác  </span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="p">;</span><span class="w">  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="c1">// Nếu đối thủ phản bội trong lượt trước, mình sẽ phản bội  </span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Defect&quot;</span><span class="p">;</span><span class="w">  </span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Cập nhật hành động của đối thủ để sử dụng trong lượt tiếp theo  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">lastOpponentCooperated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">calculatePayoff</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Sử dụng phương thức tính trả thưởng của lớp cha  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">opponentStrategy</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="c-lop-game"><strong>c. Lớp Game</strong><a class="headerlink" href="#c-lop-game" title="Permanent link">&para;</a></h4>
+<p>Trong lớp Game, chúng ta sẽ tạo ra hai người chơi: một người chơi bình thường và một <strong>SpecialPlayer</strong>, sau đó mô phỏng một số lượt chơi giữa họ.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Game</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Tạo các người chơi  </span>
+<span class="w">        </span><span class="n">Player</span><span class="w"> </span><span class="n">normalPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Player</span><span class="p">(</span><span class="s">&quot;Normal Player&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">SpecialPlayer</span><span class="w"> </span><span class="n">specialPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpecialPlayer</span><span class="p">(</span><span class="s">&quot;Special Player&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Chạy 5 lượt chơi  </span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="c1">// Người chơi bình thường chọn chiến lược ngẫu nhiên mỗi lượt  </span>
+<span class="w">            </span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Defect&quot;</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// Người chơi đặc biệt (SpecialPlayer) chọn chiến lược dựa trên lượt chơi trước đó  </span>
+<span class="w">            </span><span class="n">specialPlayer</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span>
+
+<span class="w">            </span><span class="c1">// Tính toán trả thưởng cho cả hai người chơi  </span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">payoffNormal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">specialPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span><span class="w">  </span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">payoffSpecial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specialPlayer</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span>
+
+<span class="w">            </span><span class="c1">// In kết quả trả thưởng  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Round &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (Strategy: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;) payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoffNormal</span><span class="p">);</span><span class="w">  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">specialPlayer</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (Strategy: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">specialPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;) payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoffSpecial</span><span class="p">);</span><span class="w">  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span><span class="w">  </span>
+<span class="w">        </span><span class="p">}</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-giai-thich-ma-nguon"><strong>3. Giải thích mã nguồn</strong><a class="headerlink" href="#3-giai-thich-ma-nguon" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Lớp Player</strong>:  </li>
+<li>Đây là lớp cơ bản cho người chơi trong trò chơi. Mỗi người chơi có thể chọn một chiến lược ("Cooperate" hoặc "Defect").  </li>
+<li>Phương thức calculatePayoff tính toán trả thưởng của người chơi dựa trên chiến lược của họ và đối thủ.  </li>
+<li><strong>Lớp SpecialPlayer</strong>:  </li>
+<li>Lớp này mở rộng từ Player và có chiến lược đặc biệt. Cụ thể, nó sử dụng chiến lược "Tit for Tat", tức là người chơi hợp tác trong lượt đầu tiên và sau đó phản ứng lại đối thủ trong các lượt tiếp theo.  </li>
+<li>Người chơi sẽ hợp tác nếu đối thủ hợp tác trong lượt trước, ngược lại sẽ phản bội nếu đối thủ phản bội.  </li>
+<li><strong>Lớp Game</strong>:  </li>
+<li>Lớp này điều khiển quá trình trò chơi, tạo ra các đối tượng người chơi và mô phỏng các lượt chơi. Trong ví dụ này, có 5 lượt chơi giữa một người chơi bình thường và một <strong>SpecialPlayer</strong>.  </li>
+<li>Mỗi lượt, người chơi bình thường chọn chiến lược ngẫu nhiên ("Cooperate" hoặc "Defect"), và <strong>SpecialPlayer</strong> chọn chiến lược dựa trên hành động của đối thủ ở lượt trước đó.</li>
+</ul>
+<h3 id="4-ket-qua-cua-chuong-trinh"><strong>4. Kết quả của chương trình</strong><a class="headerlink" href="#4-ket-qua-cua-chuong-trinh" title="Permanent link">&para;</a></h3>
+<p>Chạy chương trình này sẽ in ra kết quả trả thưởng cho mỗi lượt</p>
+<p>Round 1: </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Cooperate) payoff: 3  
+Special Player (Strategy: Cooperate) payoff: 3
+</code></pre></div>
+<p>Round 2:</p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Defect) payoff: 5  
+Special Player (Strategy: Cooperate) payoff: 0
+</code></pre></div>
+<p>Round 3: </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Cooperate) payoff: 3  
+Special Player (Strategy: Defect) payoff: 1
+</code></pre></div>
+<p>Round 4:  </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Defect) payoff: 5  
+Special Player (Strategy: Defect) payoff: 1
+</code></pre></div>
+<p>Round 5:  </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Cooperate) payoff: 3  
+Special Player (Strategy: Defect) payoff: 1
+</code></pre></div>
+<h2 id="3-ve-old-normal-player">3. Về Old Normal Player<a class="headerlink" href="#3-ve-old-normal-player" title="Permanent link">&para;</a></h2>
+<p>Trong lý thuyết trò chơi, <strong>"Old Normal Player"</strong> không phải là một khái niệm chính thức được định nghĩa rộng rãi trong tài liệu lý thuyết trò chơi. Tuy nhiên, nếuđang muốn mô phỏng một người chơi trong một trò chơi lý thuyết trò chơi trong Java, với thuật ngữ "Old Normal Player" có thể ám chỉ một người chơi "cũ" hoặc một người chơi "thông thường" có hành vi không thay đổi, tức là người chơi này luôn chọn một chiến lược cố định trong suốt quá trình trò chơi.</p>
+<p>cách xây dựng một lớp <strong>OldNormalPlayer</strong> trong Java, mô phỏng một người chơi "cũ" hoặc "thông thường" có hành vi đơn giản, ví dụ, chọn một chiến lược cố định trong toàn bộ trò chơi, không thay đổi theo đối thủ hoặc tình huống.</p>
+<h3 id="1-giai-thich-y-nghia-va-cac-chuc-nang-cua-old-normal-player"><strong>1. Giải thích ý nghĩa và các chức năng của "Old Normal Player"</strong><a class="headerlink" href="#1-giai-thich-y-nghia-va-cac-chuc-nang-cua-old-normal-player" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Old Normal Player</strong> là người chơi chọn một chiến lược cố định trong suốt trò chơi. Đây là một cách tiếp cận đơn giản so với các loại người chơi khác có thể thay đổi chiến lược dựa trên hành động của đối thủ.  </li>
+<li><strong>Chiến lược cố định</strong>: Người chơi này có thể chọn chiến lược <strong>Cooperate</strong> (hợp tác) hoặc <strong>Defect</strong> (phản bội) và sẽ giữ chiến lược này trong suốt trò chơi.  </li>
+<li><strong>Tính toán trả thưởng</strong>: Trả thưởng của người chơi được tính dựa trên chiến lược của đối thủ và chiến lược cố định của mình.</li>
+</ul>
+<h3 id="2-mo-phong-old-normal-player"><strong>2. Mô phỏng "Old Normal Player"</strong><a class="headerlink" href="#2-mo-phong-old-normal-player" title="Permanent link">&para;</a></h3>
+<p>tạo một lớp <strong>OldNormalPlayer</strong> kế thừa lớp <strong>Player</strong>, với một chiến lược cố định mà người chơi không thay đổi trong suốt trò chơi.</p>
+<h4 id="a-lop-player-co-ban_1"><strong>a. Lớp Player cơ bản</strong><a class="headerlink" href="#a-lop-player-co-ban_1" title="Permanent link">&para;</a></h4>
+<p>Đầu tiên, ta tạo lớp Player, lớp cơ bản đại diện cho một người chơi trong trò chơi.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Player</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Player</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mặc định chọn chiến lược hợp tác  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">chooseStrategy</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">calculatePayoff</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Ví dụ với trò chơi Prisoner&#39;s Dilemma  </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình hợp tác, đối thủ phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình phản bội, đối thủ hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Trường hợp không xác định  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="b-lop-oldnormalplayer"><strong>b. Lớp OldNormalPlayer</strong><a class="headerlink" href="#b-lop-oldnormalplayer" title="Permanent link">&para;</a></h4>
+<p>Lớp OldNormalPlayer kế thừa từ lớp Player và mô phỏng một người chơi có chiến lược cố định. Người chơi này luôn chọn một chiến lược trong suốt trò chơi.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OldNormalPlayer</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">OldNormalPlayer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">initialStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initialStrategy</span><span class="p">;</span><span class="w"> </span><span class="c1">// Chiến lược cố định khi khởi tạo  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">chooseStrategy</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Không thay đổi chiến lược, luôn giữ chiến lược ban đầu  </span>
+<span class="w">        </span><span class="c1">// Lớp OldNormalPlayer không thay đổi chiến lược trong suốt trò chơi  </span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; keeps the strategy: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">calculatePayoff</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">opponentStrategy</span><span class="p">);</span><span class="w"> </span><span class="c1">// Tính trả thưởng theo chiến lược cố định  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="c-lop-game_1"><strong>c. Lớp Game</strong><a class="headerlink" href="#c-lop-game_1" title="Permanent link">&para;</a></h4>
+<p>Lớp Game mô phỏng quá trình trò chơi giữa một <strong>OldNormalPlayer</strong> và một người chơi khác. Trong ví dụ này, người chơi <strong>OldNormalPlayer</strong> sẽ luôn chọn chiến lược cố định, trong khi người chơi bình thường có thể thay đổi chiến lược.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Game</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Tạo người chơi bình thường và người chơi OldNormalPlayer với chiến lược cố định  </span>
+<span class="w">        </span><span class="n">Player</span><span class="w"> </span><span class="n">normalPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Player</span><span class="p">(</span><span class="s">&quot;Normal Player&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">OldNormalPlayer</span><span class="w"> </span><span class="n">oldNormalPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OldNormalPlayer</span><span class="p">(</span><span class="s">&quot;Old Normal Player&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Chạy 5 lượt chơi  </span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="c1">// Người chơi bình thường chọn chiến lược ngẫu nhiên mỗi lượt  </span>
+<span class="w">            </span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Defect&quot;</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// Người chơi OldNormalPlayer luôn giữ chiến lược cố định  </span>
+<span class="w">            </span><span class="n">oldNormalPlayer</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="n">oldNormalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span>
+
+<span class="w">            </span><span class="c1">// Tính toán trả thưởng cho cả hai người chơi  </span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">payoffNormal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">oldNormalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span><span class="w">  </span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">payoffOldNormal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldNormalPlayer</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span>
+
+<span class="w">            </span><span class="c1">// In kết quả trả thưởng  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Round &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (Strategy: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">normalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;) payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoffNormal</span><span class="p">);</span><span class="w">  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">oldNormalPlayer</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (Strategy: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">oldNormalPlayer</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;) payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoffOldNormal</span><span class="p">);</span><span class="w">  </span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span><span class="w">  </span>
+<span class="w">        </span><span class="p">}</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-giai-thich-ma-nguon_1"><strong>3. Giải thích mã nguồn</strong><a class="headerlink" href="#3-giai-thich-ma-nguon_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Lớp Player</strong>:  </li>
+<li>Đây là lớp cơ bản của người chơi, nơi mà mỗi người chơi có thể chọn một chiến lược ("Cooperate" hoặc "Defect").  </li>
+<li>Phương thức calculatePayoff tính toán trả thưởng cho người chơi dựa trên chiến lược của họ và chiến lược của đối thủ.  </li>
+<li><strong>Lớp OldNormalPlayer</strong>:  </li>
+<li>Lớp này kế thừa từ Player và có chiến lược cố định trong suốt trò chơi.  </li>
+<li>Phương thức chooseStrategy trong lớp này không thay đổi gì vì chiến lược của người chơi là cố định. Người chơi <strong>OldNormalPlayer</strong> sẽ luôn giữ chiến lược mà họ chọn khi khởi tạo (ví dụ, "Cooperate" hoặc "Defect").  </li>
+<li><strong>Lớp Game</strong>:  </li>
+<li>Lớp này điều khiển quá trình trò chơi, tạo ra các đối tượng người chơi và mô phỏng các lượt chơi. Trong ví dụ này, người chơi <strong>OldNormalPlayer</strong> giữ chiến lược cố định suốt trò chơi, trong khi <strong>Player</strong> có thể thay đổi chiến lược qua từng lượt.</li>
+</ul>
+<h3 id="4-ket-qua-cua-chuong-trinh_1"><strong>4. Kết quả của chương trình</strong><a class="headerlink" href="#4-ket-qua-cua-chuong-trinh_1" title="Permanent link">&para;</a></h3>
+<p>Giả sử, người chơi <strong>OldNormalPlayer</strong> chọn chiến lược "Cooperate" khi khởi tạo, kết quả có thể như sau:</p>
+<p>Round 1:  </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Cooperate) payoff: 3  
+Old Normal Player (Strategy: Cooperate) payoff: 3
+</code></pre></div>
+<p>Round 2:  </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Defect) payoff: 5  
+Old Normal Player (Strategy: Cooperate) payoff: 0
+</code></pre></div>
+<p>Round 3:  </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Cooperate) payoff: 3  
+Old Normal Player (Strategy: Cooperate) payoff: 3
+</code></pre></div>
+<p>Round 4:  </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Defect) payoff: 5  
+Old Normal Player (Strategy: Cooperate) payoff: 0
+</code></pre></div>
+<p>Round 5:  </p>
+<div class="highlight"><pre><span></span><code>Normal Player (Strategy: Cooperate) payoff: 3  
+Old Normal Player (Strategy: Cooperate) payoff: 3
+</code></pre></div>
+<h2 id="4-ve-conflict">4. Về Conflict<a class="headerlink" href="#4-ve-conflict" title="Permanent link">&para;</a></h2>
+<p>Trong lý thuyết trò chơi, <strong>Conflict</strong> là khái niệm chỉ sự mâu thuẫn hoặc tranh chấp giữa các bên tham gia trò chơi, nơi mỗi bên có lợi ích đối lập, và kết quả của hành động của mỗi bên ảnh hưởng trực tiếp đến lợi ích của bên kia. Một ví dụ nổi bật của <strong>Conflict</strong> trong lý thuyết trò chơi là <strong>trò chơi của tù nhân (Prisoner's Dilemma)</strong>, trong đó hai người chơi có lựa chọn hợp tác hoặc phản bội, và hành động của mỗi người sẽ ảnh hưởng đến kết quả cuối cùng của cả hai.</p>
+<h3 id="1-giai-thich-ve-conflict-trong-ly-thuyet-tro-choi"><strong>1. Giải thích về "Conflict" trong lý thuyết trò chơi</strong><a class="headerlink" href="#1-giai-thich-ve-conflict-trong-ly-thuyet-tro-choi" title="Permanent link">&para;</a></h3>
+<p><strong>Conflict</strong> trong lý thuyết trò chơi có thể được hiểu là tình trạng mà lợi ích của các bên tham gia mâu thuẫn với nhau. Ví dụ, nếu một bên hợp tác, bên kia có thể bị cám dỗ để phản bội vì lợi ích cá nhân cao hơn. Mô hình <strong>Conflict</strong> thường được thể hiện trong các trò chơi như:</p>
+<ul>
+<li><strong>Prisoner's Dilemma</strong> (Dilemma của tù nhân)  </li>
+<li><strong>Chicken Game</strong> (Trò chơi con gà)  </li>
+<li><strong>Battle of Sexes</strong> (Trận chiến giới tính)</li>
+</ul>
+<p>Trong một trò chơi lý thuyết với <strong>Conflict</strong>, mỗi người chơi cần đưa ra quyết định trong tình huống mà lợi ích của họ bị ảnh hưởng trực tiếp bởi quyết định của đối thủ.</p>
+<h3 id="2-cac-lop-va-chuc-nang-trong-mo-hinh-conflict"><strong>2. Các lớp và chức năng trong mô hình "Conflict"</strong><a class="headerlink" href="#2-cac-lop-va-chuc-nang-trong-mo-hinh-conflict" title="Permanent link">&para;</a></h3>
+<p>Để mô phỏng một trò chơi lý thuyết về <strong>Conflict</strong> trong Java, bạn có thể xây dựng các lớp sau:</p>
+<ol>
+<li><strong>Player</strong>: Lớp cơ bản đại diện cho một người chơi trong trò chơi.  </li>
+<li><strong>ConflictGame</strong>: Lớp mô phỏng một trò chơi có mâu thuẫn, nơi các người chơi phải chọn chiến lược và tính toán trả thưởng dựa trên quyết định của nhau.  </li>
+<li><strong>Conflict</strong>: Lớp chính để mô phỏng mâu thuẫn và trả thưởng trong trò chơi, ví dụ như <strong>Prisoner's Dilemma</strong>.</li>
+</ol>
+<h3 id="3-mo-phong-tro-choi-co-mau-thuan-conflict"><strong>3. Mô phỏng trò chơi có mâu thuẫn (Conflict)</strong><a class="headerlink" href="#3-mo-phong-tro-choi-co-mau-thuan-conflict" title="Permanent link">&para;</a></h3>
+<p>ví dụ về cách mô phỏng một trò chơi lý thuyết có <strong>Conflict</strong> (trong trường hợp này là <strong>Prisoner's Dilemma</strong>) với hai người chơi: <strong>Player 1</strong> và <strong>Player 2</strong>.</p>
+<h4 id="a-lop-player"><strong>a. Lớp Player</strong><a class="headerlink" href="#a-lop-player" title="Permanent link">&para;</a></h4>
+<p>Đây là lớp cơ bản cho một người chơi trong trò chơi. Người chơi có thể chọn một chiến lược (hợp tác hoặc phản bội) và tính toán trả thưởng.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Player</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Player</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mặc định là hợp tác  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">chooseStrategy</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">strategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Tính toán trả thưởng dựa trên chiến lược của đối thủ  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">calculatePayoff</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình hợp tác, đối thủ phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mình phản bội, đối thủ hợp tác  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">opponentStrategy</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cả hai phản bội  </span>
+<span class="w">        </span><span class="p">}</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Trường hợp không xác định  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="b-lop-conflictgame"><strong>b. Lớp ConflictGame</strong><a class="headerlink" href="#b-lop-conflictgame" title="Permanent link">&para;</a></h4>
+<p>Lớp này mô phỏng một trò chơi có mâu thuẫn giữa hai người chơi, ví dụ, <strong>Prisoner's Dilemma</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ConflictGame</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="n">player1</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="n">player2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ConflictGame</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">player1Name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">player2Name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">player1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Player</span><span class="p">(</span><span class="n">player1Name</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">player2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Player</span><span class="p">(</span><span class="n">player2Name</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Phương thức để chơi trò chơi, nhận chiến lược của mỗi người chơi  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">play</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">strategyPlayer1</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">strategyPlayer2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="n">player1</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="n">strategyPlayer1</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">player2</span><span class="p">.</span><span class="na">chooseStrategy</span><span class="p">(</span><span class="n">strategyPlayer2</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Tính toán trả thưởng cho cả hai người chơi  </span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">payoff1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">player1</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">player2</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span><span class="w">  </span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">payoff2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">player2</span><span class="p">.</span><span class="na">calculatePayoff</span><span class="p">(</span><span class="n">player1</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// In kết quả trả thưởng  </span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">player1</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; vs &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">player2</span><span class="p">.</span><span class="na">getStrategy</span><span class="p">());</span><span class="w">  </span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">player1</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoff1</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">player2</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; payoff: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payoff2</span><span class="p">);</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Getter cho Player 1 và Player 2  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="nf">getPlayer1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">player1</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="nf">getPlayer2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">player2</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="c-lop-conflict"><strong>c. Lớp Conflict</strong><a class="headerlink" href="#c-lop-conflict" title="Permanent link">&para;</a></h4>
+<p>Lớp này mô phỏng một tình huống mâu thuẫn giữa hai người chơi, ví dụ <strong>Prisoner's Dilemma</strong>. Bạn có thể sử dụng lớp này để mô phỏng các trò chơi mâu thuẫn khác.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Conflict</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="c1">// Tạo trò chơi giữa Player 1 và Player 2  </span>
+<span class="w">        </span><span class="n">ConflictGame</span><span class="w"> </span><span class="n">game</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConflictGame</span><span class="p">(</span><span class="s">&quot;Player 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Player 2&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Chạy một số lượt chơi với các chiến lược khác nhau  </span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Round 1:&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">game</span><span class="p">.</span><span class="na">play</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Cả hai hợp tác</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;\nRound 2:&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">game</span><span class="p">.</span><span class="na">play</span><span class="p">(</span><span class="s">&quot;Cooperate&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Defect&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Player 1 hợp tác, Player 2 phản bội</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;\nRound 3:&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">game</span><span class="p">.</span><span class="na">play</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cooperate&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Player 1 phản bội, Player 2 hợp tác</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;\nRound 4:&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="w">        </span><span class="n">game</span><span class="p">.</span><span class="na">play</span><span class="p">(</span><span class="s">&quot;Defect&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Defect&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Cả hai phản bội  </span>
+<span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-giai-thich-ma-nguon_1"><strong>4. Giải thích mã nguồn</strong><a class="headerlink" href="#4-giai-thich-ma-nguon_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Lớp Player</strong>:  </li>
+<li>Mỗi người chơi có một tên và chiến lược.  </li>
+<li>Phương thức chooseStrategy cho phép người chơi chọn chiến lược của mình (Cooperate hoặc Defect).  </li>
+<li>Phương thức calculatePayoff tính toán trả thưởng dựa trên chiến lược của đối thủ và chiến lược của người chơi.  </li>
+<li><strong>Lớp ConflictGame</strong>:  </li>
+<li>Lớp này mô phỏng trò chơi giữa hai người chơi. Trong ví dụ này, chúng ta chơi trò chơi <strong>Prisoner's Dilemma</strong>.  </li>
+<li>Phương thức play nhận các chiến lược của cả hai người chơi, tính toán trả thưởng và in kết quả ra màn hình.  </li>
+<li><strong>Lớp Conflict</strong>:  </li>
+<li>Lớp chính điều khiển trò chơi, tạo đối tượng ConflictGame và mô phỏng các lượt chơi với các chiến lược khác nhau.  </li>
+<li>Trong ví dụ trên, chúng ta chạy 4 lượt chơi với các kết hợp chiến lược khác nhau.</li>
+</ul>
+<h3 id="5-ket-qua-chay-chuong-trinh"><strong>5. Kết quả chạy chương trình</strong><a class="headerlink" href="#5-ket-qua-chay-chuong-trinh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Round 1:  
+Cooperate vs Cooperate  
+Player 1 payoff: 3  
+Player 2 payoff: 3
+
+Round 2:  
+Cooperate vs Defect  
+Player 1 payoff: 0  
+Player 2 payoff: 5
+
+Round 3:  
+Defect vs Cooperate  
+Player 1 payoff: 5  
+Player 2 payoff: 0
+
+Round 4:  
+Defect vs Defect  
+Player 1 payoff: 1  
+Player 2 payoff: 1
+</code></pre></div>
+<h3 id="mot-so-nhung-bai-toan-giai-thich-va-cong-thuc-cho-nhung-module-khac"><strong>Một số những bài toán giải thích và công thức cho những module khác</strong><a class="headerlink" href="#mot-so-nhung-bai-toan-giai-thich-va-cong-thuc-cho-nhung-module-khac" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://web.tecnico.ulisboa.pt/mcasquilho/compute/_linpro/TaylorB_module_e.pdf">TaylorB_module_e.pdf</a></li>
+<li><a href="https://www3.nd.edu/~lemmon/courses/ee565/lectures/module5.pdf">module5.pdf</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "search.suggest", "search.highlighting", "search.share"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
